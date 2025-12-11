@@ -1,19 +1,34 @@
 # Zebra Hack Project
 
-This repository contains the work done by team `REPLACE_WITH_YOUR_TEAM_NAME` for ZebraHack3.0, the hackathon organized for the Web Technologies course at ACS in UPB.
+Acest repository conține munca echipei `REPLACE_WITH_YOUR_TEAM_NAME` pentru ZebraHack3.0, hackathonul organizat pentru cursul Web Technologies de la ACS în UPB.
 
-> Write here a description of your project.
+> Scrie aici o descriere a proiectului tău.
 
-## General requirements
+## Cerințe generale
 
-- See https://hackathon-tw-2025.github.io/#rules for the **Hackathon rules**.
-- This repository, **MUST**  contain in its root directory an `index.html` page, with the homepage of your project.
-  - All paths to other pages or other resources in the project must be relative. 
-  - For example, if you want to include `styles/home.css` in `index.html`, you will need to reference as `styles/home.css`, not `/styles/home.css`.
-- Proper `git` usage is REQUIRED. This means:
-  - All code **MUST** be on the `main` branch of your repository.
-  - Last `push` must be done before `15:30`.
-- This repository **MUST** to contain:
-  - the project's code;
-  - the project's presentation (power point, google slides).
+- Vezi https://zebrahack.iqnox.tech/#rules pentru regulile hackathonului.
+- Acest repository **TREBUIE** să conțină în directorul rădăcină un fișier `index.html` care reprezintă pagina principală a proiectului.
+  - Toate căile către alte pagini sau resurse trebuie să fie relative.
+  - De exemplu, dacă vrei să incluzi `styles/home.css` în `index.html`, folosește `styles/home.css`, nu `/styles/home.css`.
+- Utilizarea corectă a `git` este obligatorie: tot codul **TREBUIE** să se afle pe ramura `main`, iar ultimul `push` trebuie făcut înainte de ora `16:30`.
+- La final, repository-ul **TREBUIE** să conțină:
+  - codul proiectului;
+  - prezentarea proiectului (PowerPoint sau Google Slides).
 
+## Cum să rulezi proiectul local
+
+1. Clonează repository-ul:
+   ```bash
+   git clone REPLACE_WITH_YOUR_REPOSITORY_URL
+   ```
+2. Deschide `index.html` în browserul tău preferat.
+3. Daca foloseste VSCode, poți instala extensia "Live Server" și să rulezi proiectul direct din editor.
+
+## Cum sa verifici ca totul a fost trimis corect
+
+1. La fiecare modificare, asigură-te că faci `commit` și `push` pe ramura `main`.
+2. Pe pagina GitHub a repository-ului, in descrierea lui (ce e in dreapta sus), e un link cu proiectul publicat pe GitHub Pages. Ar trebui sa arate ceva de genul:
+```
+https://hackathon-tw-2025.github.io/zebrahack3-0-REPLACE_WITH_YOUR_TEAM_NAME/
+```
+3. Accesează link-ul respectiv și verifică dacă pagina ta se încarcă corect, si toate funcționalitățile sunt prezente.
