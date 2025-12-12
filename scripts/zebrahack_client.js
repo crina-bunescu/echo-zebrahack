@@ -35,7 +35,7 @@
 
       if (!response.ok) {
         const text = await response.text();
-        throw new Error(text || "Health check failed");
+        throw new Error(text || `HTTP error ${response.status}`);
       }
 
       return response.json();
