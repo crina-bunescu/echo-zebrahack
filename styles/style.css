@@ -12,10 +12,10 @@
   --p9:#1a2b1f;
 
   /* Light theme derived from palette */
-  --bg: var(--p0);
-  --bg2: #2e615c;                 /* slightly warmer than p0 */
+  --bg: #1e3a2d;
+  --bg2: #5FBAA1;                 /* slightly warmer than p0 */
   --surface: #2e615c(247,247,214,0.75);
-  --surface2: rgba(225,225,176,0.55);
+  --surface2: rgba(174, 174, 118, 0.55);
   --surface3: rgba(201,201,162,0.40);
 
   --text: var(--p8);
@@ -41,11 +41,14 @@ body{
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--text);
   background:
-    radial-gradient(900px 520px at 70% 12%, rgba(168,184,106,0.35) 0%, transparent 55%),
-    radial-gradient(900px 560px at 20% 22%, rgba(74,124,92,0.22) 0%, transparent 60%),
-    radial-gradient(820px 520px at 60% 92%, rgba(225,225,176,0.55) 0%, transparent 60%),
-    linear-gradient(180deg, var(--bg) 0%, var(--bg2) 60%, var(--p1) 100%);
-  min-height:100vh;
+    radial-gradient(900px 520px at 70% 12%, rgba(74,124,92,0.35) 0%, transparent 55%),
+    radial-gradient(900px 560px at 20% 22%, rgba(46,97,92,0.28) 0%, transparent 60%),
+    radial-gradient(820px 520px at 60% 92%, rgba(30,58,45,0.55) 0%, transparent 60%),
+    linear-gradient(
+      180deg,
+      var(--bg) 0%,
+      var(--bg2) 100%
+    );
 }
 
 a{ color:inherit; text-decoration:none; }
@@ -253,6 +256,7 @@ a{ color:inherit; text-decoration:none; }
 /* SECTIONS */
 .section{
   padding: 14px 0;
+  scroll-margin-top: 110px;
 }
 
 .section-card{
@@ -413,6 +417,7 @@ a{ color:inherit; text-decoration:none; }
   padding: 26px 0 44px;
   margin-top: 10px;
   border-top: 1px solid rgba(30,58,45,0.12);
+  text-align: center;
 }
 
 .footer-inner{
