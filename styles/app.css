@@ -94,3 +94,42 @@
     max-width: 100%;
   }
 }
+/* PAGINĂ */
+.add-page {
+  min-height: 100vh;
+  background: linear-gradient(
+    to right,
+    rgba(22,42,33,0.95) 0%,
+    rgba(22,42,33,0.9) 60%,
+    rgba(22,42,33,0.85) 100%
+  );
+  color: #f5f5f5;
+}
+
+/* LAYOUT */
+.add-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  padding: 140px 8vw 60px;
+  gap: 60px;
+}
+
+/* TEXT */
+.add-text h1 {
+  font-size: clamp(36px, 4vw, 56px);
+  margin-bottom: 20px;
+}
+
+.add-text .lead {
+  font-size: 18px;
+  opacity: 0.85;
+  margin-bottom: 24px;
+}
+
+.add-text h2 {
+  margin-top: 32px;
+  font-size: 22px;
+}
+
+
