@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Create a temporary client that knows how to talk to the ZebraHack API.
   const zebraApi = ZebraHackApi.createClient({
     // Replace with your team name
-    appKey: "REPLACE_WITH_TEAM_NAME",
+    appKey: "echo",
   });
 
   // Runs the health-check when the button is clicked, updating the status text.
