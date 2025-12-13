@@ -50,6 +50,19 @@
     }
 
     // TODO: add implementations for the other endpoints that you need to implement the challange for your project.
+    // in ZebraHackClient class
+  companies(role, search = "") {
+    const params = new URLSearchParams();
+    if (role) params.set("role", role);
+    params.set("search", search || "");
+    return this.request(`/api/companies?${params.toString()}`);
+  }
+
+  routes(company, role) {
+    const params = new URLSearchParams({ company, role });
+    return this.request(`/api/routes?${params.toString()}`);
+  }
+
   }
 
   global.ZebraHackApi = {

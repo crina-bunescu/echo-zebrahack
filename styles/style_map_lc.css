@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    padding: 16px;
+    background: #1f2933;
+    color: white;
+}
+
+#controls {
+    padding: 12px;
+    background: #e5e7eb;
+    display: flex;
+    gap: 20px;
+}
+
+#companies-status {
+    padding: 10px;
+    font-style: italic;
+}
+
+#companies-list {
+    padding: 10px;
+}
+
+.company-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#map {
+    height: 85vh;
+    width: 100%;
+}
