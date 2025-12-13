@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Landing page: context, SUMAL 2.0, raza de acțiune și cum funcționează aplicația."
+      content="Aplicație pentru vizualizarea transporturilor de lemn și a razei de acțiune a companiilor, pe baza datelor SUMAL 2.0."
     />
 
+    <title>Echo – Monitorizarea transporturilor de lemn</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,24 +18,28 @@
       rel="stylesheet"
     />
 
+    <!-- CSS -->
     <link rel="stylesheet" href="styles/style.css" />
   </head>
 
   <body>
+    <!-- Video background -->
     <div class="video-bg">
       <video autoplay muted loop playsinline>
         <source src="assets/forest2.mp4" type="video/mp4" />
       </video>
     </div>
+
+    <!-- HEADER -->
     <header class="nav-wrap">
       <div class="container">
         <nav class="nav" aria-label="Navigație principală">
           <a class="brand" href="#top" aria-label="Acasă">
             <span class="brand-dot" aria-hidden="true"></span>
-            <span class="brand-text">Echo </span>
+            <span class="brand-text">Echo</span>
           </a>
 
-          <ul class="nav-links" aria-label="Secțiuni">
+          <ul class="nav-links" id="navLinks">
             <li><a class="active" href="#">Home</a></li>
             <li><a href="#riscuri-majore">Informații</a></li>
             <li><a href="#sumal">SUMAL 2.0</a></li>
@@ -43,176 +50,65 @@
           <div class="nav-actions">
             <a class="btn btn-primary" href="app.html">Intră în aplicație</a>
           </div>
+
+          <!-- Burger -->
+          <button class="burger" id="burger" aria-label="Meniu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </nav>
       </div>
     </header>
 
-    <main>
+    <!-- Overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- MAIN -->
+    <main id="top">
       <!-- HERO -->
-      <section class="hero" id="top">
+      <section class="hero">
         <div class="container">
           <div class="hero-card">
             <h1 class="hero-title">Pericolul Verde</h1>
-            <h2>De ce tăierile abuzive condamnă viitorul României</h2>
+            <h2>De ce tăierile abuzive afectează viitorul României</h2>
             <p class="hero-subtitle">
-              Pădurile României sunt adesea numite „Amazonul Europei”. Deținem
-              unele dintre ultimele păduri virgine și seculare de pe continent,
-              un tezaur de biodiversitate inestimabil. Cu toate acestea,
-              tăierile ilegale și abuzive reprezintă o rană deschisă care
-              sângerează resurse, securitate și sănătate.
-            </p>
-            <p class="hero-subtitle">
-              Iată o analiză detaliată a riscurilor majore pe care le implică
-              defrișările necontrolate pentru mediul înconjurător și
-              comunitățile din România.
+              Pădurile României reprezintă o resursă esențială pentru mediu,
+              climă și comunități. Monitorizarea transparentă a transporturilor
+              de lemn este un pas important pentru protejarea acestui
+              patrimoniu.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- 1) Pericolul Verde -->
+      <!-- RISCURI -->
       <section class="section" id="riscuri-majore">
         <div class="container">
           <div class="section-card">
             <h2>Riscuri majore ale defrișărilor necontrolate</h2>
-            <div class="callouts">
-              <article class="callout">
-                <h3>
-                  Destabilizarea terenurilor și creșterea riscului de inundații
-                </h3>
-                <p>
-                  reprezintă efectul cel mai rapid resimțit de comunitățile
-                  locale. Pădurea acționează ca un sistem natural de retenție a
-                  apei; coroanele copacilor interceptează ploaia, iar rădăcinile
-                  stabilizează solul. Eliminarea vegetației forestiere face ca
-                  precipitațiile să se scurgă rapid de pe versanți, provocând
-                  viituri violente și inundații bruște. Mai mult, slăbirea
-                  coeziunii solului duce la alunecări de teren care pot distruge
-                  drumuri, căi ferate și pot îngropa gospodării întregi.
-                </p>
-              </article>
-              <article class="callout">
-                <h3>
-                  Dezechilibrele ecologice și conflictele dintre faună și om
-                </h3>
-                <p>
-                  sunt o consecință directă a fragmentării habitatelor. Pădurile
-                  României găzduiesc populații semnificative de carnivore mari
-                  (urs, lup, râs). Tăierile abuzive distrug „casa” acestor
-                  animale și le izolează în zone prea mici pentru supraviețuire.
-                  Din cauza lipsei de hrană și adăpost, animalele sălbatice sunt
-                  forțate să migreze către așezările umane, ceea ce explică
-                  creșterea alarmantă a incidentelor periculoase dintre oameni
-                  și urși în zonele locuite.
-                </p>
-              </article>
-              <article class="callout">
-                <h3>
-                  Impactul negativ asupra calității vieții și sănătății publice
-                </h3>
-                <p>
-                  se manifestă prin pierderea „filtrelor” naturale. Diminuarea
-                  suprafețelor împădurite reduce capacitatea de captare a
-                  dioxidului de carbon (CO2) și de filtrare a prafului,
-                  contribuind la creșterea poluării atmosferice. De asemenea,
-                  aluviunile scurse de pe versanții despăduriți ajung în râuri,
-                  colmatând lacurile de acumulare și afectând calitatea apei
-                  potabile, proces ce implică costuri mari de purificare.
-                </p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 2) Cum poti ajuta -->
-      <section class="section" id="cum-poti-ajuta">
-        <div class="container">
-          <div class="section-card">
-            <h2>Cum poți ajuta?</h2>
             <p>
-              Pădurea nu este doar lemn; este apă, aer, securitate și viață.
-              Tăierile abuzive nu sunt doar o problemă ecologică, ci una de
-              siguranță națională. Informarea, raportarea transporturilor
-              suspecte (prin 112 sau aplicații dedicate precum Inspectorul
-              Pădurii) și presiunea civică sunt uneltele noastre pentru a opri
-              dezastrul.
+              Defrișările pot genera inundații, alunecări de teren, pierderi de
+              biodiversitate și pot afecta siguranța comunităților locale.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- 3) Importanta monitorizarii -->
-      <section class="section" id="importanta-monitorizarii">
-        <div class="container">
-          <div class="section-card">
-            <h2>Importanța monitorizării tăierilor</h2>
-            <div class="mini-grid">
-              <article class="mini">
-                <p>
-                  <b>Pădurile sunt esențiale </b> pentru protecția mediului,
-                  climă și bunăstarea oamenilor. Ele ajută la reglarea
-                  temperaturii, la stocarea carbonului, protejează solul și
-                  rețin apa, contribuind astfel la prevenirea inundațiilor și
-                  eroziunii.
-                </p>
-              </article>
-              <article class="mini">
-                <p>
-                  <b>Defrișările, în special cele necontrolate </b>, pot cauza
-                  pierderi importante de păduri, afectând biodiversitatea și
-                  echilibrul ecosistemelor. De asemenea, tăierile neînregistrate
-                  pot ascunde activități ilegale sau practici care nu respectă
-                  normele de gestionare durabilă.
-                </p>
-              </article>
-              <article class="mini">
-                <p>
-                  <b>Monitorizarea continuă a pădurilor </b>, pe baza unor date
-                  exacte, permite autorităților și societății civile să
-                  identifice schimbările în timp real, să evalueze riscurile și
-                  să ia decizii informate pentru protejarea terenurilor
-                  împădurite.
-                </p>
-              </article>
-              <article class="mini">
-                <p>
-                  <b>Datele transparente și ușor accesibile </b> despre
-                  transporturile de lemn și activitatea companiilor forestiere
-                  sprijină responsabilitatea și conformitatea, contribuind la o
-                  gestionare durabilă a resurselor forestiere.
-                </p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4) SUMAL 2.0 -->
+      <!-- SUMAL -->
       <section class="section" id="sumal">
         <div class="container">
           <div class="section-card">
             <h2>Legătura cu SUMAL 2.0 și Inspectorul Pădurii</h2>
             <p>
-              Monitorizarea transporturilor de lemn din România se bazează pe
-              datele colectate prin SUMAL 2.0 (Sistemul Informațional Integrat
-              de Urmărire a Materialelor Lemnoase), platformă națională
-              administrată de Ministerul Mediului, Apelor și Pădurilor. SUMAL
-              2.0 are rolul de a înregistra și urmări trasabilitatea
-              materialului lemnos, de la punctul de origine până la destinație.
+              Datele utilizate provin din SUMAL 2.0, sistem național administrat
+              de Ministerul Mediului, Apelor și Pădurilor, care urmărește
+              trasabilitatea materialului lemnos.
             </p>
-            <p>
-              Pentru a asigura transparența și accesul publicului la aceste
-              informații, datele relevante sunt puse la dispoziția cetățenilor
-              prin platforma Inspectorul Pădurii, unde pot fi consultate avizele
-              de transport și activitatea din domeniul forestier.
-            </p>
-            <p>🔗 Mai multe informații:</p>
 
-            <div class="links" role="list">
+            <div class="links">
               <a
                 class="link"
-                role="listitem"
                 href="https://mmediu.ro/domenii/paduri/sumal/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -221,7 +117,6 @@
               </a>
               <a
                 class="link"
-                role="listitem"
                 href="https://inspectorulpadurii.ro/#/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -233,98 +128,79 @@
         </div>
       </section>
 
-      <!-- 5) Ce inseamna raza -->
+      <!-- RAZA -->
       <section class="section" id="raza">
         <div class="container">
           <div class="section-card">
-            <h2>Ce înseamnă „raza de acțiune” a unei companii?</h2>
+            <h2>Ce înseamnă „raza de acțiune”?</h2>
             <p>
-              „Raza de acțiune” a unei companii reprezintă zona geografică în
-              care apar transporturile de lemn asociate acelei companii, conform
-              datelor înregistrate în sistemul SUMAL 2.0. Aceasta este
-              determinată pe baza locațiilor și traseelor transporturilor
-              raportate, oferind o imagine de ansamblu asupra ariei în care
-              compania își desfășoară activitatea.
+              Raza de acțiune reprezintă zona geografică în care apar
+              transporturile asociate unei companii, conform datelor SUMAL 2.0,
+              oferind o imagine de ansamblu asupra ariei de desfășurare a
+              activității.
             </p>
-            <p>
-              Prin vizualizarea acestei zone pe hartă, utilizatorii pot înțelege
-              cât de extinsă este activitatea unei companii, unde sunt
-              concentrate transporturile și care este distanța aproximativă pe
-              care lemnul este deplasat. Această informație sprijină
-              transparența și ajută la analizarea tiparelor de operare din
-              sectorul forestier.
-            </p>
-
-            <div class="hint">
-              <strong>Important:</strong> Raza este un indicator derivat din
-              date observate, nu o graniță legală și nu implică automat
-              nereguli.
-            </div>
           </div>
         </div>
       </section>
 
-      <!-- 6) Cum functioneaza aplicatia -->
+      <!-- CUM FUNCTIONEAZA -->
       <section class="section" id="cum-functioneaza">
         <div class="container">
           <div class="section-card">
             <h2>Cum funcționează aplicația?</h2>
-            <p>
-              În doar câțiva pași poți explora activitatea unei companii pe
-              hartă.
-            </p>
 
             <ol class="steps">
-              <li class="step">
-                <div class="step-num">1</div>
-                <div class="step-body">
-                  <h3>Accesarea aplicației</h3>
-                  <p>
-                    Utilizatorul accesează aplicația și vizualizează harta
-                    României, pregătită pentru explorare.
-                  </p>
-                </div>
-              </li>
-
-              <li class="step">
-                <div class="step-num">2</div>
-                <div class="step-body">
-                  <h3>Selectarea companiei</h3>
-                  <p>
-                    Se alege rolul companiei (emitent sau destinatar), apoi
-                    compania este căutată după denumire.
-                  </p>
-                </div>
-              </li>
-
-              <li class="step">
-                <div class="step-num">3</div>
-                <div class="step-body">
-                  <h3>Vizualizarea activității</h3>
-                  <p>
-                    Aplicația afișează pe hartă traseele de transport asociate
-                    companiei, zona aproximativă de desfășurare a activității și
-                    lista transporturilor disponibile în datele SUMAL.
-                  </p>
-                </div>
+              <li>Se accesează harta României</li>
+              <li>Se selectează compania după rol și denumire</li>
+              <li>
+                Se vizualizează rutele de transport, zona de activitate și
+                transporturile asociate
               </li>
             </ol>
 
             <div class="center-cta">
-              <a class="btn btn-primary btn-lg" href="app.html"
-                >Intră în aplicație</a
-              >
+              <a class="btn btn-primary btn-lg" href="app.html">
+                Accesează harta interactivă
+              </a>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- FOOTER -->
       <footer class="footer">
         <div class="container footer-inner">
-          <span>© 2025 ECHO</span>
-          <a class="footer-link" href="#">Înapoi sus ↑</a>
+          <span>© 2025 Echo</span>
+          <a class="footer-link" href="#top">Înapoi sus ↑</a>
         </div>
       </footer>
     </main>
+
+    <!-- JS -->
+    <script>
+      const burger = document.getElementById("burger");
+      const navLinks = document.getElementById("navLinks");
+      const overlay = document.getElementById("navOverlay");
+
+      function closeMenu() {
+        burger.classList.remove("active");
+        navLinks.classList.remove("open");
+        overlay.style.display = "none";
+      }
+
+      burger.addEventListener("click", () => {
+        burger.classList.toggle("active");
+        navLinks.classList.toggle("open");
+        overlay.style.display = navLinks.classList.contains("open")
+          ? "block"
+          : "none";
+      });
+
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      overlay.addEventListener("click", closeMenu);
+    </script>
   </body>
 </html>

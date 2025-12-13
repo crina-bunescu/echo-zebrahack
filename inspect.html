@@ -2,142 +2,99 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <title>Inspector – Raza de acțiune</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Leaflet CSS -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  />
-
+  <title>Inspector – Transporturi suspecte</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="styles/style.css" />
   <link rel="stylesheet" href="styles/inspect.css" />
 </head>
 
 <body>
-  <header class="app-header">
-    <div class="brand">
-      <div class="logo">ZH</div>
-      <div class="titles">
-        <div class="app-title">Inspector Transporturi</div>
-        <div class="app-subtitle">Raza de acțiune & rute suspecte</div>
+
+<header class="nav-wrap">
+  <div class="container">
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        <span class="brand-dot"></span>
+        <span class="brand-text">Echo</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="app.html">Home</a></li>
+        <li><a href="map.html">Hartă</a></li>
+        <li><a href="inspect.html">Analiză trasnport</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="btn" href="index.html">Ieși</a>
       </div>
+    </nav>
+  </div>
+</header>
+
+<div id="loading-overlay" class="hidden">
+  <h2>Se încarcă rutele</h2>
+  <p>Calculăm scorul de suspiciune pentru fiecare rută...</p>
+</div>
+
+<div id="search-panel">
+  <div class="search-controls">
+    <select id="role-select">
+      <option value="emitent">Emitent</option>
+      <option value="destinatar">Destinatar</option>
+    </select>
+    <input id="search-input" type="text" placeholder="Caută companie..." />
+    <button id="clear-search">✕</button>
+    <button id="open-transports" class="hidden-control">Transporturi</button>
+  </div>
+  <div id="search-results"></div>
+</div>
+
+<div id="inspector-panel" class="hidden">
+  <div class="details-header">
+    <h2 id="company-name">Companie</h2>
+    <button id="close-panel">✕</button>
+  </div>
+
+  <div class="details-content">
+    
+    <div class="category green">
+      <div class="category-header" onclick="toggleList('list-green')">
+        <h3>🟢 Destinație plauzibilă</h3>
+        <span class="count-badge" id="count-green">0</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <ul id="list-green" class="transport-list hidden-list"></ul>
     </div>
 
-    <nav class="nav">
-      <a class="nav-link" href="index.html">Introducere</a>
-      <a class="nav-link active" href="inspect.html">Hartă / Inspector</a>
-    </nav>
-  </header>
-
-  <main class="layout">
-    <!-- LEFT: search + list -->
-    <aside class="left">
-      <section class="card">
-        <h2 class="card-title">Caută companii</h2>
-
-        <div class="controls">
-          <label class="field">
-            <span class="label">Rol</span>
-            <select id="roleSelect" class="input">
-              <option value="emitent">Emitent</option>
-              <option value="destinatar">Destinatar</option>
-            </select>
-          </label>
-
-          <label class="field grow">
-            <span class="label">Căutare</span>
-            <input id="searchInput" class="input" type="text" placeholder="Ex: SC Lemn SRL" autocomplete="off" />
-          </label>
-        </div>
-
-        <div class="status-row">
-          <div id="companiesStatus" class="status muted">Tastează pentru a căuta…</div>
-          <button id="clearBtn" class="btn btn-ghost" type="button">Reset</button>
-        </div>
-      </section>
-
-      <section class="card list-card">
-        <div class="list-header">
-          <h3 class="card-title small">Rezultate</h3>
-          <div class="pill" id="resultsCount">0</div>
-        </div>
-
-        <div id="companiesList" class="list">
-          <!-- items injected -->
-        </div>
-      </section>
-    </aside>
-
-    <!-- CENTER: map -->
-    <section class="map-wrap">
-      <div id="map"></div>
-
-      <div class="legend card">
-        <div class="legend-title">Legendă</div>
-        <div class="legend-row"><span class="dot green"></span> Destinație plauzibilă</div>
-        <div class="legend-row"><span class="dot orange"></span> Destinație incertă</div>
-        <div class="legend-row"><span class="dot red"></span> În afara razei</div>
-        <div class="legend-row"><span class="dot gray"></span> Fără geometrie</div>
+    <div class="category orange">
+      <div class="category-header" onclick="toggleList('list-orange')">
+        <h3>🟠 Destinație incertă</h3>
+        <span class="count-badge" id="count-orange">0</span>
+        <span class="toggle-icon">▼</span>
       </div>
-    </section>
+      <ul id="list-orange" class="transport-list hidden-list"></ul>
+    </div>
 
-    <!-- RIGHT: inspector panel -->
-    <aside class="right">
-      <section class="card">
-        <div class="panel-head">
-          <h2 class="card-title">Panou inspector</h2>
-          <button id="toggleRoutesBtn" class="btn btn-ghost" type="button">Ascunde lista</button>
-        </div>
+    <div class="category red">
+      <div class="category-header" onclick="toggleList('list-red')">
+        <h3>🔴 Tracking Critic</h3>
+        <span class="count-badge" id="count-red">0</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <ul id="list-red" class="transport-list hidden-list"></ul>
+    </div>
 
-        <div id="companyBlock" class="company-block">
-          <div class="muted">Selectează o companie din listă.</div>
-        </div>
-      </section>
+  </div>
+</div>
 
-      <section class="card">
-        <h3 class="card-title small">Filtre rapide</h3>
+<div id="map"></div>
 
-        <div class="filters">
-          <label class="check">
-            <input type="checkbox" id="filterOutside" />
-            <span>Doar în afara razei</span>
-          </label>
-          <label class="check">
-            <input type="checkbox" id="filterWeak" />
-            <span>Doar tracking slab</span>
-          </label>
-        </div>
-      </section>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  function toggleList(id) {
+    const list = document.getElementById(id);
+    list.classList.toggle('hidden-list');
+  }
+</script>
+<script src="scripts/inspect.js"></script>
 
-      <section class="card routes-card" id="routesCard">
-        <div class="routes-head">
-          <h3 class="card-title small">Transporturi</h3>
-          <div class="pill" id="routesCount">0</div>
-        </div>
-
-        <div id="routesStatus" class="status muted">Alege o companie…</div>
-        <div id="routesList" class="routes-list">
-          <!-- route items injected -->
-        </div>
-      </section>
-
-      <section class="card">
-        <h3 class="card-title small">Detalii rută</h3>
-        <div id="routeDetails" class="route-details muted">
-          Click pe o rută de pe hartă sau din listă.
-        </div>
-      </section>
-    </aside>
-  </main>
-
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="scripts/inspect.js"></script>
 </body>
 </html>

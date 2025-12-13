@@ -428,7 +428,6 @@ a{ color:inherit; text-decoration:none; }
 }
 
 @media (max-width: 860px){
-  .nav-links{ display:none; } /* simplu, fără hamburger momentan */
   .hero-links{ gap: 8px; }
   .chip{ padding: 10px 10px; }
 }
@@ -457,4 +456,106 @@ body::before{
   inset: 0;
   background: rgba(22, 42, 33, 0.55);
   z-index: -1;
+}
+/* =========================
+   BURGER BUTTON
+========================= */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.burger span {
+  width: 24px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animatie burger -> X */
+.burger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* =========================
+   OVERLAY BLUR
+========================= */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 900;
+  display: none;
+}
+
+/* =========================
+   RESPONSIVE NAV
+========================= */
+@media (max-width: 900px) {
+  .nav {
+    position: relative;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 64px;
+    right: 16px;
+    background: rgba(20, 40, 25, 0.95);
+    flex-direction: column;
+    width: 240px;
+
+    max-height: 0;
+    overflow-y: auto;
+    /* 🔑 scroll intern */
+    padding: 0;
+    border-radius: 12px;
+
+    transition: max-height 0.35s ease;
+    z-index: 1000;
+  }
+
+  .nav-links li {
+    padding: 12px 16px;
+  }
+
+  .nav-links a {
+    color: #ffffff;
+  }
+
+  .nav-links.open {
+    max-height: 320px;
+    /* 🔑 nu kilometric */
+  }
+
+  .nav-actions {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+}
+
+.nav-wrap.menu-open {
+  backdrop-filter: none;
+}
+#menu-toggle {
+  display: none;
+}
+.nav-links {
+  pointer-events: auto;
 }

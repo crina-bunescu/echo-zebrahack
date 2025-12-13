@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const APP_KEY = "echo";
 
-//setare
+//setare harta la coordonatele Romaniei
   const map = L.map("map").setView([45.9432, 24.9668], 7);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "&copy; OpenStreetMap contributors"
@@ -10,12 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const routesLayer = L.featureGroup().addTo(map);
   let radiusCircle = null;
   let currentCompany = null;
-  let routeLayers = []; // sincronizare rute <-> tabel
+  let routeLayers = []; // sincronizare rute cu casute tabel
   let highlightedLayer = null;
 
-  // =========================
-  // UI ELEMENTS
-  // =========================
+  //UI elements
   const input = document.getElementById("search-input");
   const roleSelect = document.getElementById("role-select");
   const results = document.getElementById("search-results");
@@ -37,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const transportsContainer = document.getElementById("transports-container");
   const transportsTableBody = document.querySelector("#transports-table tbody");
 
-  // ascundem butoanele până când rutele sunt gata
+  // ascundem butoanele details până când rutele sunt gata
   toggleRadiusBtn.classList.add("hidden-control");
   openDetailsBtn.classList.add("hidden-control");
 
@@ -214,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // click pe rută -> highlight + (opțional) selectare rând
       layer.on("click", () => {
         resetHighlight();
-        layer.setStyle({ color: "#d32f2f", weight: 3 });
+        layer.setStyle({ color: "#d32f2f", weight: 15 });
         highlightedLayer = layer;
       });
 
