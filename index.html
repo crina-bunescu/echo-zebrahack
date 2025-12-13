@@ -1,21 +1,227 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <title>ZebraHack3.0</title>
-    <link rel="stylesheet" href="styles/style.css">
-</head>
-<body>
-    <header>
-        <h1>Demo ZebraHack</h1>
-    </header>
-    <main>
-        <button type="button" class="health-btn" id="health-btn">Verificare health</button>
-        <div id="health-status" class="status">Așteaptă testul...</div>
-    </main>
-    <footer>Nume echipa</footer>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pericolul Verde – Raza de acțiune</title>
+  <meta name="description" content="Landing page: context, SUMAL 2.0, raza de acțiune și cum funcționează aplicația." />
 
-    <script src="scripts/zebrahack_client.js"></script>
-    <script src="scripts/index.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+
+<body>
+  <header class="nav-wrap">
+    <div class="container">
+      <nav class="nav" aria-label="Navigație principală">
+        <a class="brand" href="#top" aria-label="Acasă">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span class="brand-text">ZebraHack <b>3.0</b></span>
+        </a>
+
+        <ul class="nav-links" aria-label="Secțiuni">
+          <li><a class="active" href="#top">Home</a></li>
+          <li><a href="#cum-poti-ajuta">Cum poți ajuta?</a></li>
+          <li><a href="#sumal">SUMAL 2.0</a></li>
+          <li><a href="#cum-functioneaza">Cum funcționează</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a class="btn btn-primary" href="app.html">Intră în aplicație</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <p class="badge">Monitor transporturi • SUMAL 2.0 • Raza de acțiune</p>
+
+          <h1 class="hero-title">Pericolul Verde</h1>
+          <p class="hero-subtitle">
+            De ce tăierile abuzive condamnă viitorul României — și cum o vizualizare simplă a transporturilor
+            poate sprijini investigațiile și prioritizarea verificărilor.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1) Pericolul Verde -->
+    <section class="section" id="pericolul-verde">
+      <div class="container">
+        <div class="section-card">
+          <h2>Pericolul Verde: De ce tăierile abuzive condamnă viitorul României</h2>
+          <p>
+            Pădurile nu sunt doar peisaj — ele sunt infrastructură naturală: protejează solul, reglează apa,
+            reduc riscul de inundații și susțin biodiversitatea. Când exploatarea scapă de sub control, efectele
+            se văd în comunități, în economie și în calitatea vieții.
+          </p>
+
+          <div class="callouts">
+            <article class="callout">
+              <h3>Impact ecologic</h3>
+              <p>Eroziune, pierdere de biodiversitate și degradarea habitatelor.</p>
+            </article>
+            <article class="callout">
+              <h3>Impact social</h3>
+              <p>Vulnerabilitate la dezastre și degradarea resurselor locale.</p>
+            </article>
+            <article class="callout">
+              <h3>Impact economic</h3>
+              <p>Pierderi pe termen lung și distorsiuni în lanțul de aprovizionare.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2) Cum poti ajuta -->
+    <section class="section" id="cum-poti-ajuta">
+      <div class="container">
+        <div class="section-card">
+          <h2>Cum poți ajuta?</h2>
+          <p>
+            Transparența funcționează când informația e ușor de înțeles. Această aplicație te ajută să explorezi
+            activitatea unei companii: unde apar transporturile, ce rute sunt folosite și care e zona aproximativă
+            de operare.
+          </p>
+
+          <ul class="list">
+            <li>Explorează companiile ca emitent sau destinatar și observă tipare geografice.</li>
+            <li>Compară rutele și volumul transporturilor pentru a identifica activitate intensă.</li>
+            <li>Folosește aplicația ca punct de pornire pentru întrebări și verificări.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3) Importanta monitorizarii -->
+    <section class="section" id="importanta-monitorizarii">
+      <div class="container">
+        <div class="section-card">
+          <h2>Importanța monitorizării tăierilor</h2>
+          <p>
+            Monitorizarea transporturilor de lemn oferă o imagine “din teren”: rute, timp, volum, specii și legături
+            între emitent și destinatar. O hartă bună nu înlocuiește controlul, dar îl face mai eficient.
+          </p>
+
+          <div class="mini-grid">
+            <article class="mini">
+              <h3>Claritate</h3>
+              <p>Vezi rapid unde se concentrează activitatea.</p>
+            </article>
+            <article class="mini">
+              <h3>Prioritizare</h3>
+              <p>Identifici zone/companii care merită analizate întâi.</p>
+            </article>
+            <article class="mini">
+              <h3>Context</h3>
+              <p>Înțelegi mai ușor lanțurile de transport și tiparele.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4) SUMAL 2.0 -->
+    <section class="section" id="sumal">
+      <div class="container">
+        <div class="section-card">
+          <h2>SUMAL 2.0</h2>
+          <p>
+            SUMAL 2.0 (Sistemul informațional integrat de urmărire a materialelor lemnoase) urmărește exploatarea,
+            transportul, depozitarea și comercializarea lemnului. Inspectorul Pădurii este interfața publică ce permite
+            consultarea avizelor și traseelor.
+          </p>
+
+          <div class="links" role="list">
+            <a class="link" role="listitem" href="https://mmediu.ro/domenii/paduri/sumal/" target="_blank" rel="noopener noreferrer">
+              SUMAL 2.0 – Ministerul Mediului
+            </a>
+            <a class="link" role="listitem" href="https://inspectorulpadurii.ro/#/" target="_blank" rel="noopener noreferrer">
+              Inspectorul Pădurii
+            </a>
+          </div>
+
+          <p class="note">
+            Notă: această pagină este strict informativă și statică (HTML + CSS). Datele sunt folosite în pagina aplicației.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5) Ce inseamna raza -->
+    <section class="section" id="raza">
+      <div class="container">
+        <div class="section-card">
+          <h2>Ce înseamnă „raza de acțiune” a unei companii?</h2>
+          <p>
+            “Raza de acțiune” este o aproximare a zonei în care apar transporturile asociate unei companii
+            (emitent sau destinatar) în datele SUMAL. În aplicație, zona e reprezentată ca un cerc (sau poligon)
+            în jurul unui punct central — un reper vizual rapid pentru extinderea activității.
+          </p>
+
+          <div class="hint">
+            <strong>Important:</strong> Raza este un indicator derivat din date observate, nu o graniță legală și nu implică automat nereguli.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6) Cum functioneaza aplicatia -->
+    <section class="section" id="cum-functioneaza">
+      <div class="container">
+        <div class="section-card">
+          <h2>Cum funcționează aplicația?</h2>
+          <p>
+            În doar câțiva pași poți explora activitatea unei companii pe hartă.
+          </p>
+
+          <ol class="steps">
+            <li class="step">
+              <div class="step-num">1</div>
+              <div class="step-body">
+                <h3>Deschizi harta României</h3>
+                <p>Intri în aplicație și vezi harta, gata de explorare.</p>
+              </div>
+            </li>
+
+            <li class="step">
+              <div class="step-num">2</div>
+              <div class="step-body">
+                <h3>Alegi rolul și cauți compania</h3>
+                <p>Selectezi emitent/destinatar și cauți după nume.</p>
+              </div>
+            </li>
+
+            <li class="step">
+              <div class="step-num">3</div>
+              <div class="step-body">
+                <h3>Vizualizezi rutele și zona de acțiune</h3>
+                <p>Vezi rutele și cercul aproximativ al activității + tabelul cu transporturi.</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="center-cta">
+            <a class="btn btn-primary btn-lg" href="app.html">Intră în aplicație</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>ZebraHack 3.0 • Landing page (Task 1) • Conținut static (HTML + CSS)</p>
+        <a class="footer-link" href="#top">Înapoi sus ↑</a>
+      </div>
+    </footer>
+  </main>
 </body>
 </html>
