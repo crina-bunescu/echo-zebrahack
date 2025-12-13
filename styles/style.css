@@ -1,5 +1,4 @@
 :root{
-  /* Whispers of the Forest palette */
   --p0:#f7f7d6;
   --p1:#e1e1b0;
   --p2:#c9c9a2;
@@ -11,9 +10,8 @@
   --p8:#1e3a2d;
   --p9:#1a2b1f;
 
-  /* Light theme derived from palette */
   --bg: #1e3a2d;
-  --bg2: #5FBAA1;                 /* slightly warmer than p0 */
+  --bg2: #5FBAA1;                 
   --surface: #2e615c(247,247,214,0.75);
   --surface2: rgba(174, 174, 118, 0.55);
   --surface3: rgba(201,201,162,0.40);
@@ -29,8 +27,8 @@
 
   --radius: 18px;
 
-  --accent: var(--p6);  /* teal green */
-  --accent2: var(--p5); /* softer green */
+  --accent: var(--p6);  
+  --accent2: var(--p5); 
   --accentSoft: rgba(46,97,92,0.14);
 }
 
@@ -49,7 +47,7 @@ a{ color:inherit; text-decoration:none; }
   margin: 0 auto;
 }
 
-/* NAV */
+/* navbar */
 .nav-wrap{
   position: sticky;
   top: 0;
@@ -71,7 +69,6 @@ a{ color:inherit; text-decoration:none; }
   box-shadow: var(--shadow2);
 }
 
-/* pregătit pentru efect "scrolled" (vei adăuga clasa mai târziu) */
 .nav.is-scrolled{
   border-color: var(--stroke2);
   background: rgba(247,247,214,0.85);
@@ -133,7 +130,7 @@ a{ color:inherit; text-decoration:none; }
 
 .nav-actions{ display:flex; align-items:center; gap: 10px; }
 
-/* BUTTONS */
+/* butoane */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -164,7 +161,6 @@ a{ color:inherit; text-decoration:none; }
 
 .btn-lg{ padding: 12px 18px; font-size: 15px; }
 
-/* HERO */
 .hero{
   padding: 22px 0 12px;
 }
@@ -245,7 +241,6 @@ a{ color:inherit; text-decoration:none; }
   transform: translateY(-1px);
 }
 
-/* SECTIONS */
 .section{
   padding: 14px 0;
   scroll-margin-top: 110px;
@@ -354,7 +349,6 @@ a{ color:inherit; text-decoration:none; }
   color: rgba(30,58,45,0.92);
 }
 
-/* STEPS */
 .steps{
   list-style:none;
   padding: 0;
@@ -404,7 +398,7 @@ a{ color:inherit; text-decoration:none; }
   margin-top: 16px;
 }
 
-/* FOOTER */
+/* footer*/
 .footer{
   padding: 26px 0 44px;
   margin-top: 10px;
@@ -436,7 +430,7 @@ a{ color:inherit; text-decoration:none; }
   *{ transition:none !important; scroll-behavior:auto; }
 }
 
-/* VIDEO BACKGROUND */
+/* pentru video */
 .video-bg{
   position: fixed;
   inset: 0;
@@ -457,9 +451,7 @@ body::before{
   background: rgba(22, 42, 33, 0.55);
   z-index: -1;
 }
-/* =========================
-   BURGER BUTTON
-========================= */
+/* burger button */
 .burger {
   display: none;
   flex-direction: column;
@@ -478,7 +470,7 @@ body::before{
   transition: all 0.3s ease;
 }
 
-/* Animatie burger -> X */
+/*animatie burger*/
 .burger.active span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
@@ -491,9 +483,7 @@ body::before{
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* =========================
-   OVERLAY BLUR
-========================= */
+/* blur*/
 .nav-overlay {
   position: fixed;
   inset: 0;
@@ -502,9 +492,7 @@ body::before{
   display: none;
 }
 
-/* =========================
-   RESPONSIVE NAV
-========================= */
+/*responsive nav*/
 @media (max-width: 900px) {
   .nav {
     position: relative;
@@ -517,13 +505,10 @@ body::before{
     background: rgba(20, 40, 25, 0.95);
     flex-direction: column;
     width: 240px;
-
     max-height: 0;
     overflow-y: auto;
-    /* 🔑 scroll intern */
     padding: 0;
     border-radius: 12px;
-
     transition: max-height 0.35s ease;
     z-index: 1000;
   }
@@ -538,7 +523,6 @@ body::before{
 
   .nav-links.open {
     max-height: 320px;
-    /* 🔑 nu kilometric */
   }
 
   .nav-actions {

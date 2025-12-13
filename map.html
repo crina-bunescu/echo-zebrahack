@@ -4,13 +4,10 @@
   <meta charset="UTF-8" />
   <title>Hartă – Rute transport lemn</title>
 
-  <!-- Leaflet CSS -->
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   />
-
-  <!-- CSS-ul tău -->
    <link rel="stylesheet" href="styles/style.css" />
   <link rel="stylesheet" href="styles/style_map_lc.css" />
 </head>
@@ -36,14 +33,12 @@
   </div>
 </header>
 
-    <!-- LOADING OVERLAY (doar pentru rute) -->
     <div id="loading-overlay" class="hidden">
       <h2 id="loading-title">Se încarcă rutele</h2>
       <p id="loading-subtitle">Calculăm rutele pe hartă…</p>
     </div>
 
 
-  <!-- SEARCH PANEL -->
     <div id="search-panel">
       <div class="search-controls">
         <select id="role-select">
@@ -73,7 +68,7 @@
       <div id="search-results"></div>
     </div>
 
-    <!-- DETAILS PANEL -->
+    <!-- panou de detalii -->
     <div id="company-details" class="hidden">
       <div class="details-header">
         <h2 id="details-name"></h2>
@@ -118,13 +113,10 @@
       </div>
     </div>
 
-  <!-- HARTA FULL SCREEN -->
   <div id="map"></div>
 
-  <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  <!-- JS-ul tău -->
   <script src="scripts/map.js"></script>
 </body>
 </html>
