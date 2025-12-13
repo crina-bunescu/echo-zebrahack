@@ -1,284 +1,216 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ro">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pericolul Verde – Raza de acțiune</title>
-    <meta
-      name="description"
-      content="Landing page: context, SUMAL 2.0, raza de acțiune și cum funcționează aplicația."
-    />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Landing page: context, SUMAL 2.0, raza de acțiune și cum funcționează aplicația." />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="styles/style.css" />
-  </head>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
 
-  <body>
-    <header class="nav-wrap">
+<body>
+  <header class="nav-wrap">
+    <div class="container">
+      <nav class="nav" aria-label="Navigație principală">
+        <a class="brand" href="#top" aria-label="Acasă">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span class="brand-text">Echo </span>
+        </a>
+
+        <ul class="nav-links" aria-label="Secțiuni">
+          <li><a class="active" href="#">Home</a></li>
+          <li><a href="#riscuri-majore">Informații</a></li>
+          <li><a href="#sumal">SUMAL 2.0</a></li>
+          <li><a href="#raza">Raza de acțiune</a></li>
+          <li><a href="#cum-functioneaza">Cum funcționează</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a class="btn btn-primary" href="app.html">Intră în aplicație</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main >
+    <!-- HERO -->
+    <section class="hero" id="top">
       <div class="container">
-        <nav class="nav" aria-label="Navigație principală">
-          <a class="brand" href="#top" aria-label="Acasă">
-            <span class="brand-dot" aria-hidden="true"></span>
-            <span class="brand-text">ZebraHack <b>3.0</b></span>
-          </a>
-
-          <ul class="nav-links" aria-label="Secțiuni">
-            <li><a class="active" href="#top">Home</a></li>
-            <li><a href="#cum-poti-ajuta">Cum poți ajuta?</a></li>
-            <li><a href="#sumal">SUMAL 2.0</a></li>
-            <li><a href="#cum-functioneaza">Cum funcționează</a></li>
-          </ul>
-
-          <div class="nav-actions">
-            <a class="btn btn-primary" href="app.html">Intră în aplicație</a>
-          </div>
-        </nav>
+        <div class="hero-card">
+          <h1 class="hero-title" >Pericolul Verde</h1>
+          <h2>De ce tăierile abuzive condamnă viitorul României</h2>
+          <p class="hero-subtitle"> Pădurile României sunt adesea numite „Amazonul Europei”. Deținem unele dintre ultimele păduri virgine și seculare de pe continent, un tezaur de biodiversitate inestimabil. Cu toate acestea, tăierile ilegale și abuzive reprezintă o rană deschisă care sângerează resurse, securitate și sănătate. </p>
+          <p class="hero-subtitle">Iată o analiză detaliată a riscurilor majore pe care le implică defrișările necontrolate pentru mediul înconjurător și comunitățile din România.</p>  
+        </div>
       </div>
-    </header>
+    </section>
 
-    <main id="top">
-      <!-- HERO -->
-      <section class="hero">
-        <div class="container">
-          <div class="hero-card">
-            <p class="badge">
-              Monitor transporturi • SUMAL 2.0 • Raza de acțiune
-            </p>
-
-            <h1 class="hero-title">Pericolul Verde</h1>
-            <p class="hero-subtitle">
-              De ce tăierile abuzive condamnă viitorul României — și cum o
-              vizualizare simplă a transporturilor poate sprijini investigațiile
-              și prioritizarea verificărilor.
-            </p>
+    <!-- 1) Pericolul Verde -->
+    <section class="section" id="riscuri-majore">
+      <div class="container">
+        <div class="section-card">
+          <h2>Riscuri majore ale defrișărilor necontrolate</h2>
+          <div class="callouts">
+            <article class="callout">
+              <h3>Destabilizarea terenurilor și creșterea riscului de inundații</h3>
+              <p>reprezintă efectul cel mai rapid resimțit de comunitățile locale. Pădurea acționează ca un sistem natural de retenție a apei; coroanele copacilor interceptează ploaia, iar rădăcinile stabilizează solul. Eliminarea vegetației forestiere face ca precipitațiile să se scurgă rapid de pe versanți, provocând viituri violente și inundații bruște. Mai mult, slăbirea coeziunii solului duce la alunecări de teren care pot distruge drumuri, căi ferate și pot îngropa gospodării întregi.</p>
+            </article>
+            <article class="callout">
+              <h3>Dezechilibrele ecologice și conflictele dintre faună și om</h3>
+              <p>sunt o consecință directă a fragmentării habitatelor. Pădurile României găzduiesc populații semnificative de carnivore mari (urs, lup, râs). Tăierile abuzive distrug „casa” acestor animale și le izolează în zone prea mici pentru supraviețuire. Din cauza lipsei de hrană și adăpost, animalele sălbatice sunt forțate să migreze către așezările umane, ceea ce explică creșterea alarmantă a incidentelor periculoase dintre oameni și urși în zonele locuite.</p>
+            </article>
+            <article class="callout">
+              <h3>Impactul negativ asupra calității vieții și sănătății publice </h3>
+              <p>se manifestă prin pierderea „filtrelor” naturale. Diminuarea suprafețelor împădurite reduce capacitatea de captare a dioxidului de carbon (CO2) și de filtrare a prafului, contribuind la creșterea poluării atmosferice. De asemenea, aluviunile scurse de pe versanții despăduriți ajung în râuri, colmatând lacurile de acumulare și afectând calitatea apei potabile, proces ce implică costuri mari de purificare.</p>
+            </article>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- 1) Pericolul Verde -->
-      <section class="section" id="pericolul-verde">
-        <div class="container">
-          <div class="section-card">
-            <h2>
-              Pericolul Verde: De ce tăierile abuzive condamnă viitorul României
-            </h2>
-            <p>
-              Pădurile nu sunt doar peisaj — ele sunt infrastructură naturală:
-              protejează solul, reglează apa, reduc riscul de inundații și
-              susțin biodiversitatea. Când exploatarea scapă de sub control,
-              efectele se văd în comunități, în economie și în calitatea vieții.
-            </p>
-
-            <div class="callouts">
-              <article class="callout">
-                <h3>Impact ecologic</h3>
-                <p>
-                  Eroziune, pierdere de biodiversitate și degradarea
-                  habitatelor.
-                </p>
-              </article>
-              <article class="callout">
-                <h3>Impact social</h3>
-                <p>
-                  Vulnerabilitate la dezastre și degradarea resurselor locale.
-                </p>
-              </article>
-              <article class="callout">
-                <h3>Impact economic</h3>
-                <p>
-                  Pierderi pe termen lung și distorsiuni în lanțul de
-                  aprovizionare.
-                </p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 2) Cum poti ajuta -->
-      <section class="section" id="cum-poti-ajuta">
-        <div class="container">
-          <div class="section-card">
-            <h2>Cum poți ajuta?</h2>
-            <p>
-              Transparența funcționează când informația e ușor de înțeles.
-              Această aplicație te ajută să explorezi activitatea unei companii:
-              unde apar transporturile, ce rute sunt folosite și care e zona
-              aproximativă de operare.
-            </p>
-
-            <ul class="list">
-              <li>
-                Explorează companiile ca emitent sau destinatar și observă
-                tipare geografice.
-              </li>
-              <li>
-                Compară rutele și volumul transporturilor pentru a identifica
-                activitate intensă.
-              </li>
-              <li>
-                Folosește aplicația ca punct de pornire pentru întrebări și
-                verificări.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- 3) Importanta monitorizarii -->
-      <section class="section" id="importanta-monitorizarii">
-        <div class="container">
-          <div class="section-card">
-            <h2>Importanța monitorizării tăierilor</h2>
-            <p>
-              Monitorizarea transporturilor de lemn oferă o imagine “din teren”:
-              rute, timp, volum, specii și legături între emitent și destinatar.
-              O hartă bună nu înlocuiește controlul, dar îl face mai eficient.
-            </p>
-
-            <div class="mini-grid">
-              <article class="mini">
-                <h3>Claritate</h3>
-                <p>Vezi rapid unde se concentrează activitatea.</p>
-              </article>
-              <article class="mini">
-                <h3>Prioritizare</h3>
-                <p>Identifici zone/companii care merită analizate întâi.</p>
-              </article>
-              <article class="mini">
-                <h3>Context</h3>
-                <p>Înțelegi mai ușor lanțurile de transport și tiparele.</p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4) SUMAL 2.0 -->
-      <section class="section" id="sumal">
-        <div class="container">
-          <div class="section-card">
-            <h2>SUMAL 2.0</h2>
-            <p>
-              SUMAL 2.0 (Sistemul informațional integrat de urmărire a
-              materialelor lemnoase) urmărește exploatarea, transportul,
-              depozitarea și comercializarea lemnului. Inspectorul Pădurii este
-              interfața publică ce permite consultarea avizelor și traseelor.
-            </p>
-
-            <div class="links" role="list">
-              <a
-                class="link"
-                role="listitem"
-                href="https://mmediu.ro/domenii/paduri/sumal/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                SUMAL 2.0 – Ministerul Mediului
-              </a>
-              <a
-                class="link"
-                role="listitem"
-                href="https://inspectorulpadurii.ro/#/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Inspectorul Pădurii
-              </a>
-            </div>
-
-            <p class="note">
-              Notă: această pagină este strict informativă și statică (HTML +
-              CSS). Datele sunt folosite în pagina aplicației.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5) Ce inseamna raza -->
-      <section class="section" id="raza">
-        <div class="container">
-          <div class="section-card">
-            <h2>Ce înseamnă „raza de acțiune” a unei companii?</h2>
-            <p>
-              “Raza de acțiune” este o aproximare a zonei în care apar
-              transporturile asociate unei companii (emitent sau destinatar) în
-              datele SUMAL. În aplicație, zona e reprezentată ca un cerc (sau
-              poligon) în jurul unui punct central — un reper vizual rapid
-              pentru extinderea activității.
-            </p>
-
-            <div class="hint">
-              <strong>Important:</strong> Raza este un indicator derivat din
-              date observate, nu o graniță legală și nu implică automat
-              nereguli.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 6) Cum functioneaza aplicatia -->
-      <section class="section" id="cum-functioneaza">
-        <div class="container">
-          <div class="section-card">
-            <h2>Cum funcționează aplicația?</h2>
-            <p>
-              În doar câțiva pași poți explora activitatea unei companii pe
-              hartă.
-            </p>
-
-            <ol class="steps">
-              <li class="step">
-                <div class="step-num">1</div>
-                <div class="step-body">
-                  <h3>Deschizi harta României</h3>
-                  <p>Intri în aplicație și vezi harta, gata de explorare.</p>
-                </div>
-              </li>
-
-              <li class="step">
-                <div class="step-num">2</div>
-                <div class="step-body">
-                  <h3>Alegi rolul și cauți compania</h3>
-                  <p>Selectezi emitent/destinatar și cauți după nume.</p>
-                </div>
-              </li>
-
-              <li class="step">
-                <div class="step-num">3</div>
-                <div class="step-body">
-                  <h3>Vizualizezi rutele și zona de acțiune</h3>
-                  <p>
-                    Vezi rutele și cercul aproximativ al activității + tabelul
-                    cu transporturi.
-                  </p>
-                </div>
-              </li>
-            </ol>
-
-            <div class="center-cta">
-              <a class="btn btn-primary btn-lg" href="app.html"
-                >Intră în aplicație</a
-              >
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer class="footer">
-        <div class="container footer-inner">
+    <!-- 2) Cum poti ajuta -->
+    <section class="section" id="cum-poti-ajuta">
+      <div class="container">
+        <div class="section-card">
+          <h2>Cum poți ajuta?</h2>
           <p>
-            ZebraHack 3.0 • Landing page (Task 1) • Conținut static (HTML + CSS)
+            Pădurea nu este doar lemn; este apă, aer, securitate și viață. Tăierile abuzive nu sunt doar o problemă ecologică, ci una de siguranță națională. Informarea, raportarea transporturilor suspecte (prin 112 sau aplicații dedicate precum Inspectorul Pădurii) și presiunea civică sunt uneltele noastre pentru a opri dezastrul.
           </p>
-          <a class="footer-link" href="#top">Înapoi sus ↑</a>
         </div>
-      </footer>
-    </main>
-  </body>
+      </div>
+    </section>
+
+    <!-- 3) Importanta monitorizarii -->
+    <section class="section" id="importanta-monitorizarii">
+      <div class="container">
+        <div class="section-card">
+          <h2>Importanța monitorizării tăierilor</h2>
+          <div class="mini-grid">
+            <article class="mini">
+              <p> <b>Pădurile sunt esențiale </b> pentru protecția mediului, climă și bunăstarea oamenilor. 
+                Ele ajută la reglarea temperaturii, la stocarea carbonului, protejează solul și rețin apa, contribuind astfel la prevenirea inundațiilor și eroziunii.</p>
+            </article>
+            <article class="mini">
+              <p> <b>Defrișările, în special cele necontrolate </b>, pot cauza pierderi importante de păduri,
+                 afectând biodiversitatea și echilibrul ecosistemelor. De asemenea, tăierile neînregistrate pot ascunde activități ilegale sau practici care nu respectă normele de gestionare durabilă.</p>
+            </article>
+            <article class="mini">
+              <p> <b>Monitorizarea continuă a pădurilor </b>, pe baza unor date exacte, permite autorităților și societății
+                 civile să identifice schimbările în timp real, să evalueze riscurile și să ia decizii informate pentru protejarea terenurilor împădurite.</p>
+            </article>
+            <article class="mini">
+              <p> <b>Datele transparente și ușor accesibile </b> despre transporturile de lemn și activitatea companiilor
+                 forestiere sprijină responsabilitatea și conformitatea, contribuind la o gestionare durabilă a resurselor forestiere.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4) SUMAL 2.0 -->
+    <section class="section" id="sumal">
+      <div class="container">
+        <div class="section-card">
+          <h2>Legătura cu SUMAL 2.0 și Inspectorul Pădurii</h2>
+          <p>
+            Monitorizarea transporturilor de lemn din România se bazează pe datele colectate prin SUMAL 2.0 (Sistemul Informațional Integrat de Urmărire a Materialelor Lemnoase), 
+            platformă națională administrată de Ministerul Mediului, Apelor și Pădurilor. SUMAL 2.0 are rolul de a înregistra și urmări trasabilitatea materialului lemnos, de la
+            punctul de origine până la destinație.
+          </p>
+          <p>
+           Pentru a asigura transparența și accesul publicului la aceste informații, datele relevante sunt puse la dispoziția cetățenilor prin platforma Inspectorul Pădurii, unde
+          pot fi consultate avizele de transport și activitatea din domeniul forestier.
+          </p>
+          <p> 🔗 Mai multe informații:</p>
+
+          <div class="links" role="list">
+            <a class="link" role="listitem" href="https://mmediu.ro/domenii/paduri/sumal/" target="_blank" rel="noopener noreferrer">
+              SUMAL 2.0 – Ministerul Mediului
+            </a>
+            <a class="link" role="listitem" href="https://inspectorulpadurii.ro/#/" target="_blank" rel="noopener noreferrer">
+              Inspectorul Pădurii
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5) Ce inseamna raza -->
+    <section class="section" id="raza">
+      <div class="container">
+        <div class="section-card">
+          <h2>Ce înseamnă „raza de acțiune” a unei companii?</h2>
+          <p>
+            „Raza de acțiune” a unei companii reprezintă zona geografică în care apar transporturile de lemn asociate acelei companii,
+             conform datelor înregistrate în sistemul SUMAL 2.0. Aceasta este determinată pe baza locațiilor și traseelor transporturilor 
+             raportate, oferind o imagine de ansamblu asupra ariei în care compania își desfășoară activitatea.
+          </p>
+          <p>
+            Prin vizualizarea acestei zone pe hartă, utilizatorii pot înțelege cât de extinsă este activitatea unei companii, unde sunt
+             concentrate transporturile și care este distanța aproximativă pe care lemnul este deplasat. Această informație sprijină transparența 
+             și ajută la analizarea tiparelor de operare din sectorul forestier.
+          </p>
+
+          <div class="hint">
+            <strong>Important:</strong> Raza este un indicator derivat din date observate, nu o graniță legală și nu implică automat nereguli.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6) Cum functioneaza aplicatia -->
+    <section class="section" id="cum-functioneaza">
+      <div class="container">
+        <div class="section-card">
+          <h2>Cum funcționează aplicația?</h2>
+          <p>
+            În doar câțiva pași poți explora activitatea unei companii pe hartă.
+          </p>
+
+          <ol class="steps">
+            <li class="step">
+              <div class="step-num">1</div>
+              <div class="step-body">
+                <h3>Deschizi harta României</h3>
+                <p>Intri în aplicație și vezi harta, gata de explorare.</p>
+              </div>
+            </li>
+
+            <li class="step">
+              <div class="step-num">2</div>
+              <div class="step-body">
+                <h3>Alegi rolul și cauți compania</h3>
+                <p>Selectezi emitent/destinatar și cauți după nume.</p>
+              </div>
+            </li>
+
+            <li class="step">
+              <div class="step-num">3</div>
+              <div class="step-body">
+                <h3>Vizualizezi rutele și zona de acțiune</h3>
+                <p>Vezi rutele și cercul aproximativ al activității + tabelul cu transporturi.</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="center-cta">
+            <a class="btn btn-primary btn-lg" href="app.html">Intră în aplicație</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+  <div class="container footer-inner">
+    <span>© 2025 ECHO</span>
+    <a class="footer-link" href="#">Înapoi sus ↑</a>
+  </div>
+</footer>
+  </main>
+</body>
 </html>
