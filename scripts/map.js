@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const APP_KEY = "echo";
 
-//setare
+//setare harta la coordonatele Romaniei
   const map = L.map("map").setView([45.9432, 24.9668], 7);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "&copy; OpenStreetMap contributors"
@@ -10,12 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const routesLayer = L.featureGroup().addTo(map);
   let radiusCircle = null;
   let currentCompany = null;
-  let routeLayers = []; // sincronizare rute <-> tabel
+  let routeLayers = []; // sincronizare rute cu casute tabel
   let highlightedLayer = null;
 
-  // =========================
-  // UI ELEMENTS
-  // =========================
+  //elemente UI
   const input = document.getElementById("search-input");
   const roleSelect = document.getElementById("role-select");
   const results = document.getElementById("search-results");
@@ -37,13 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const transportsContainer = document.getElementById("transports-container");
   const transportsTableBody = document.querySelector("#transports-table tbody");
 
-  // ascundem butoanele până când rutele sunt gata
+  // ascundem butoanele details până când rutele sunt gata
   toggleRadiusBtn.classList.add("hidden-control");
   openDetailsBtn.classList.add("hidden-control");
 
-  // =========================
-  // LOADING OVERLAY (doar pentru rute)
-  // =========================
   const loadingOverlay = document.getElementById("loading-overlay");
   const loadingTitle = document.getElementById("loading-title");
   const loadingSubtitle = document.getElementById("loading-subtitle");
@@ -74,9 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
     clearInterval(loadingInterval);
   }
 
-  // =========================
-  // HELPERS
-  // =========================
   function calculeazaVolum(route) {
     if (!route.species || !Array.isArray(route.species)) return 0;
     return route.species.reduce((sum, s) => sum + (s.volume || 0), 0);
@@ -97,9 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // =========================
-  // SEARCH COMPANIES (fără overlay)
-  // =========================
+  // cautam compania
   let searchTimer = null;
 
   input.addEventListener("input", () => {
@@ -150,39 +140,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // =========================
-  // SELECT COMPANY
-  // =========================
+  // selectam compania
   async function selectCompany(c) {
     currentCompany = c;
     input.value = c.name;
     results.innerHTML = "";
 
-    // nu afișăm nimic automat (raza/detalii) — doar rutele
+    // nu afișăm nimic doar rutele
     showLoading("Se încarcă rutele");
     await loadRoutes(c.name, c.role);
     hideLoading();
 
-    // abia ACUM apar butoanele
+    // apar butoanele
     toggleRadiusBtn.classList.remove("hidden-control");
     openDetailsBtn.classList.remove("hidden-control");
 
-    // reset UI detalii / transporturi (panel rămâne închis până la click)
+    // reset UI detalii / transporturi 
     detailsPanel.classList.add("hidden");
     transportsContainer.classList.add("hidden");
     toggleTransportsBtn.textContent = "Arată transporturile";
   }
 
-  // =========================
-  // LOAD ROUTES + TABEL
-  // =========================
+  // incarca rutele + tabel
   async function loadRoutes(name, role) {
     routesLayer.clearLayers();
     transportsTableBody.innerHTML = "";
     routeLayers = [];
     resetHighlight();
 
-    // dacă există cerc, îl resetăm (utilizatorul îl pornește din nou la click)
+    // dacă există cerc, îl resetăm 
     if (radiusCircle) {
       map.removeLayer(radiusCircle);
       radiusCircle = null;
@@ -197,32 +183,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const routes = data.routes || [];
 
-    // pentru evidențiere volum (bară)
+    // pentru evidențiere volum
     const volumes = routes.map(calculeazaVolum);
     const maxVolume = Math.max(...volumes, 1);
 
     routes.forEach((route, idx) => {
       if (!route.geometry) return;
 
-      // RUTĂ pe hartă
+      // ruta pe harta
       const layer = L.geoJSON(route.geometry, {
         style: { color: "#1b5e20", weight: 1.5, opacity: 0.85 }
       }).addTo(routesLayer);
 
       routeLayers.push(layer);
 
-      // click pe rută -> highlight + (opțional) selectare rând
       layer.on("click", () => {
         resetHighlight();
-        layer.setStyle({ color: "#d32f2f", weight: 3 });
+        layer.setStyle({ color: "#d32f2f", weight: 15 });
         highlightedLayer = layer;
       });
 
-      // VOLUM
+      // calculam volumul
       const volume = calculeazaVolum(route);
       const barWidth = Math.round((volume / maxVolume) * 100);
 
-      // RÂND tabel (coloanele cerute)
+      //rand tabel
       const tr = document.createElement("tr");
       tr.className = "transport-row";
 
@@ -248,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <td>${updatedLocal}</td>
       `;
 
-      // click pe rând -> highlight rută + zoom
+      // click pe rând duce la highlight pe ruta si zoom
       tr.onclick = () => {
         resetHighlight();
         layer.setStyle({ color: "#d32f2f", weight: 3 });
@@ -264,20 +249,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // =========================
-  // BUTON RAZĂ (toggle)
-  // =========================
+  // buton raza
   toggleRadiusBtn.onclick = () => {
     if (!currentCompany) return;
 
-    // toggle off
     if (radiusCircle) {
       map.removeLayer(radiusCircle);
       radiusCircle = null;
       return;
     }
 
-    // toggle on
     if (!currentCompany.center || !currentCompany.radius_meters) return;
 
     radiusCircle = L.circle(
@@ -294,9 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
     map.fitBounds(radiusCircle.getBounds(), { padding: [40, 40] });
   };
 
-  // =========================
-  // DETALII (doar la click)
-  // =========================
+  //detalii doar la click
   openDetailsBtn.onclick = () => {
     if (!currentCompany) return;
 
@@ -306,7 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
     dLat.textContent = currentCompany.center.latitude.toFixed(4);
     dLon.textContent = currentCompany.center.longitude.toFixed(4);
 
-    // last_activity local (cerință)
+    //ultima activitate local
     dLast.textContent = new Date(currentCompany.last_activity).toLocaleString("ro-RO");
 
     detailsPanel.classList.remove("hidden");
@@ -316,9 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
     detailsPanel.classList.add("hidden");
   };
 
-  // =========================
-  // TRANSPORTS TOGGLE (pliabil)
-  // =========================
+ 
   toggleTransportsBtn.onclick = () => {
     transportsContainer.classList.toggle("hidden");
     toggleTransportsBtn.textContent =
@@ -327,9 +304,7 @@ document.addEventListener("DOMContentLoaded", () => {
         : "Ascunde transporturile";
   };
 
-  // =========================
-  // CLEAR (reset complet)
-  // =========================
+  // reset
   clearBtn.onclick = () => {
     input.value = "";
     results.innerHTML = "";
@@ -357,17 +332,12 @@ document.addEventListener("DOMContentLoaded", () => {
     hideLoading();
   };
 
-  // =========================
-  // AUTOLOAD din URL (opțional, dacă vii din lista companii)
-  // =========================
   const params = new URLSearchParams(window.location.search);
   const companyFromUrl = params.get("company");
   const roleFromUrl = params.get("role");
   if (companyFromUrl && roleFromUrl) {
     // simulăm selectarea: fără search overlay
     const c = { name: companyFromUrl, role: roleFromUrl };
-    // ca să avem și center/radius/last_activity, ar trebui să faci call la /companies.
-    // Pentru demo rapid: dacă vii din listă, vei selecta încă o dată din search pentru detalii complete.
     input.value = companyFromUrl;
   }
 });

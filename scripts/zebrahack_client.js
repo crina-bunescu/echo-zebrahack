@@ -1,11 +1,7 @@
 (function (global) {
-  /**
-   * ZebraHackClient encapsulates base URL handling, common headers, and JSON
-   * parsing so UI code can call the API consistently.
-   */
-  class ZebraHackClient {
+ class ZebraHackClient {
     /**
-     * @param {{ baseUrl?: string; appKey?: string }} [config]
+      @param {{ baseUrl?: string; appKey?: string }} [config]
      */
     constructor({
       baseUrl = "https://zebrahack.iqnox.tech",
@@ -16,9 +12,9 @@
     }
 
     /**
-     * Perform a GET request with JSON parsing and error handling.
-     * @param {string} path
-     * @returns {Promise<any>}
+     
+      @param {string} path
+      @returns {Promise<any>}
      */
     async request(path) {
       const headers = {
@@ -42,15 +38,13 @@
     }
 
     /**
-     * Convenience wrapper for `/api/health`.
-     * @returns {Promise<any>}
+     
+      @returns {Promise<any>}
      */
     health() {
       return this.request("/api/health");
     }
 
-    // TODO: add implementations for the other endpoints that you need to implement the challange for your project.
-    // in ZebraHackClient class
   companies(role, search = "") {
     const params = new URLSearchParams();
     if (role) params.set("role", role);
@@ -68,7 +62,7 @@
   global.ZebraHackApi = {
     ZebraHackClient,
     /**
-     * @param {{ baseUrl?: string; appKey?: string }} [config]
+      @param {{ baseUrl?: string; appKey?: string }} [config]
      */
     createClient: (config) => new ZebraHackClient(config || {}),
   };

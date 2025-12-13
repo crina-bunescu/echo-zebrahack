@@ -24,7 +24,7 @@ html, body {
     z-index: -1;
   }
   
-  /* SEARCH PANEL */
+  /* bara search */
   #search-panel {
     position: fixed;
     top: 90px;
@@ -77,7 +77,7 @@ html, body {
     background: #f5f5f5;
   }
   
-  /* LOADING */
+  /* incarcare */
   #loading-overlay {
     position: fixed;
     inset: 0;
@@ -93,8 +93,7 @@ html, body {
   #loading-overlay.hidden {
     display: none;
   }
-  
-  /* INSPECTOR PANEL */
+ 
   #inspector-panel {
     position: fixed;
     right: 0;
@@ -135,7 +134,6 @@ html, body {
     flex: 1;
   }
   
-  /* CATEGORIES ACCORDION */
   .category {
     margin-bottom: 10px;
     border: 1px solid #eee;
@@ -179,12 +177,11 @@ html, body {
     color: #666;
   }
   
-  /* HIDDEN LIST LOGIC */
   .hidden-list {
     display: none;
   }
   
-  /* TRANSPORT CARDS */
+  /* carduri pt transport */
   .transport-list {
     list-style: none;
     padding: 0;
@@ -196,7 +193,7 @@ html, body {
     border-top: 1px solid #eee;
     font-size: 13px;
     background: #fff;
-    cursor: pointer; /* Click to zoom on map */
+    cursor: pointer; 
   }
   
   .transport-item:hover {
@@ -226,12 +223,11 @@ html, body {
     border-top: 1px dashed #eee;
   }
   
-  /* SCORE COLORS */
+  /* culori pt scor */
   .score-high { color: #c62828; }   /* Rau */
   .score-med { color: #f57c00; }    /* Mediu */
   .score-low { color: #2e7d32; }    /* Bun */
-  
-  /* Specific category headers */
+
   .green h3 { color: #2e7d32; }
   .orange h3 { color: #f57c00; }
   .red h3 { color: #c62828; }

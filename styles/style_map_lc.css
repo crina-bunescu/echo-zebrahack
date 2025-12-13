@@ -27,7 +27,7 @@ body::before {
 }
 
 
-/* SEARCH PANEL */
+/* bara de search */
 #search-panel {
     position: fixed;
     top: 90px;
@@ -95,7 +95,6 @@ body::before {
     font-size: 12px;
 }
 
-/* LOADING OVERLAY (doar rute) */
 #loading-overlay {
     position: fixed;
     inset: 0;
@@ -125,7 +124,6 @@ body::before {
     text-align: center;
 }
 
-/* DETAILS PANEL */
 #company-details {
     position: fixed;
     right: 0;
@@ -177,7 +175,7 @@ body::before {
     margin: 12px 0;
 }
 
-/* TRANSPORTS */
+/* transport*/
 #toggle-transports {
     width: 100%;
     padding: 10px;
@@ -237,7 +235,7 @@ body::before {
     color: #666;
 }
 
-/* MOBILE */
+/* responsive*/
 @media (max-width: 768px) {
     #company-details {
         width: 100%;

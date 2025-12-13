@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     let currentCompany = null;
   
-    // ---- SEARCH LOGIC ----
+    // logica de search
     input.addEventListener("input", async () => {
       const q = input.value.trim();
       if (q.length < 2) {
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
       openBtn.classList.remove("hidden-control");
     }
   
-    // ---- GEOMETRY MATH (Haversine) ----
+    // calcule
     function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
       const R = 6371; // Raza pamantului
       const dLat = deg2rad(lat2 - lat1);
@@ -75,9 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function calculateRouteDistance(geometry) {
         if (!geometry || !geometry.coordinates || geometry.coordinates.length < 2) return 0;
         let totalDist = 0;
-        const coords = geometry.coordinates; // GeoJSON [lon, lat]
+        const coords = geometry.coordinates; 
         for (let i = 0; i < coords.length - 1; i++) {
-            // In GeoJSON e [lon, lat], functia noastra vrea lat, lon
             const p1 = coords[i];
             const p2 = coords[i+1];
             totalDist += getDistanceFromLatLonInKm(p1[1], p1[0], p2[1], p2[0]);
@@ -85,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return totalDist;
     }
   
-    // ---- CORE LOGIC ----
+   
     async function loadRoutes(c) {
       routesLayer.clearLayers();
       
@@ -111,27 +110,25 @@ document.addEventListener("DOMContentLoaded", () => {
         (data.routes || []).forEach(r => {
           if (!r.geometry) return;
   
-          // 1. Calculam metri/km reali
+          // calculam metri/km reali
           const distKm = calculateRouteDistance(r.geometry);
           const points = r.point_count || 1;
   
-          // 2. Calculam SCOR SUSPICIUNE (Km per Punct)
-          // Exemplu: 0.1 (bun), 5.0 (rau - 5km intre puncte)
+          // calculam scor suspiciune
           const suspicionScore = (distKm / points).toFixed(2);
           
           let status = "green";
-          // Logica de business pentru hackathon
           if (points < 5 || suspicionScore > 5.0) {
               status = "red"; 
           } else if (suspicionScore > 1.5) {
               status = "orange";
           }
   
-          // 3. Adaugare pe harta
+          // adaugare pe harta
           const color = status === "green" ? "#2e7d32" : status === "orange" ? "#f57c00" : "#c62828";
           const layer = L.geoJSON(r.geometry, { style: { color, weight: 2, opacity: 0.8 }}).addTo(routesLayer);
   
-          // 4. Creare Card in lista
+          // creare card in lista
           const li = document.createElement("li");
           li.className = "transport-item";
           
@@ -148,10 +145,9 @@ document.addEventListener("DOMContentLoaded", () => {
               </span>
           `;
           
-          // Click pe card face zoom pe ruta
+          // click pe card face zoom pe ruta
           li.onclick = () => {
              map.fitBounds(layer.getBounds(), { maxZoom: 13 });
-             // Highlight temporar
              layer.setStyle({ weight: 5 });
              setTimeout(() => layer.setStyle({ weight: 2 }), 1500);
           };
@@ -161,7 +157,6 @@ document.addEventListener("DOMContentLoaded", () => {
           if (status === "red") { listRed.appendChild(li); counts.red++; }
         });
   
-        // Update badge counts
         document.getElementById("count-green").textContent = counts.green;
         document.getElementById("count-orange").textContent = counts.orange;
         document.getElementById("count-red").textContent = counts.red;
