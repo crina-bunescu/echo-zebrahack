@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inspector – Raza de acțiune</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <link rel="stylesheet" href="styles/inspect.css" />
+</head>
+
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <div class="logo">ZH</div>
+      <div class="titles">
+        <div class="app-title">Inspector Transporturi</div>
+        <div class="app-subtitle">Raza de acțiune & rute suspecte</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a class="nav-link" href="index.html">Introducere</a>
+      <a class="nav-link active" href="inspect.html">Hartă / Inspector</a>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <!-- LEFT: search + list -->
+    <aside class="left">
+      <section class="card">
+        <h2 class="card-title">Caută companii</h2>
+
+        <div class="controls">
+          <label class="field">
+            <span class="label">Rol</span>
+            <select id="roleSelect" class="input">
+              <option value="emitent">Emitent</option>
+              <option value="destinatar">Destinatar</option>
+            </select>
+          </label>
+
+          <label class="field grow">
+            <span class="label">Căutare</span>
+            <input id="searchInput" class="input" type="text" placeholder="Ex: SC Lemn SRL" autocomplete="off" />
+          </label>
+        </div>
+
+        <div class="status-row">
+          <div id="companiesStatus" class="status muted">Tastează pentru a căuta…</div>
+          <button id="clearBtn" class="btn btn-ghost" type="button">Reset</button>
+        </div>
+      </section>
+
+      <section class="card list-card">
+        <div class="list-header">
+          <h3 class="card-title small">Rezultate</h3>
+          <div class="pill" id="resultsCount">0</div>
+        </div>
+
+        <div id="companiesList" class="list">
+          <!-- items injected -->
+        </div>
+      </section>
+    </aside>
+
+    <!-- CENTER: map -->
+    <section class="map-wrap">
+      <div id="map"></div>
+
+      <div class="legend card">
+        <div class="legend-title">Legendă</div>
+        <div class="legend-row"><span class="dot green"></span> Destinație plauzibilă</div>
+        <div class="legend-row"><span class="dot orange"></span> Destinație incertă</div>
+        <div class="legend-row"><span class="dot red"></span> În afara razei</div>
+        <div class="legend-row"><span class="dot gray"></span> Fără geometrie</div>
+      </div>
+    </section>
+
+    <!-- RIGHT: inspector panel -->
+    <aside class="right">
+      <section class="card">
+        <div class="panel-head">
+          <h2 class="card-title">Panou inspector</h2>
+          <button id="toggleRoutesBtn" class="btn btn-ghost" type="button">Ascunde lista</button>
+        </div>
+
+        <div id="companyBlock" class="company-block">
+          <div class="muted">Selectează o companie din listă.</div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3 class="card-title small">Filtre rapide</h3>
+
+        <div class="filters">
+          <label class="check">
+            <input type="checkbox" id="filterOutside" />
+            <span>Doar în afara razei</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="filterWeak" />
+            <span>Doar tracking slab</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="card routes-card" id="routesCard">
+        <div class="routes-head">
+          <h3 class="card-title small">Transporturi</h3>
+          <div class="pill" id="routesCount">0</div>
+        </div>
+
+        <div id="routesStatus" class="status muted">Alege o companie…</div>
+        <div id="routesList" class="routes-list">
+          <!-- route items injected -->
+        </div>
+      </section>
+
+      <section class="card">
+        <h3 class="card-title small">Detalii rută</h3>
+        <div id="routeDetails" class="route-details muted">
+          Click pe o rută de pe hartă sau din listă.
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="scripts/inspect.js"></script>
+</body>
+</html>
