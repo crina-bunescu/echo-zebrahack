@@ -3,21 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <title>Inspector – Transporturi suspecte</title>
-
-  <!-- Leaflet -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  />
-
-  <!-- CSS comun + inspirat din colega -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="styles/style.css" />
   <link rel="stylesheet" href="styles/inspect.css" />
 </head>
 
 <body>
 
-<!-- NAVBAR EXISTENT -->
 <header class="nav-wrap">
   <div class="container">
     <nav class="nav">
@@ -25,13 +17,11 @@
         <span class="brand-dot"></span>
         <span class="brand-text">Echo</span>
       </a>
-
       <ul class="nav-links">
         <li><a href="app.html">Home</a></li>
         <li><a href="map.html">Hartă</a></li>
         <li><a href="liste.html">Liste</a></li>
       </ul>
-
       <div class="nav-actions">
         <a class="btn" href="index.html">Ieși</a>
       </div>
@@ -39,62 +29,71 @@
   </div>
 </header>
 
-<!-- LOADING OVERLAY -->
 <div id="loading-overlay" class="hidden">
   <h2>Se încarcă rutele</h2>
-  <p>Analizăm transporturile raportate în SUMAL…</p>
+  <p>Calculăm scorul de suspiciune pentru fiecare rută...</p>
 </div>
 
-<!-- SEARCH PANEL -->
 <div id="search-panel">
   <div class="search-controls">
     <select id="role-select">
       <option value="emitent">Emitent</option>
       <option value="destinatar">Destinatar</option>
     </select>
-
-    <input id="search-input" type="text" placeholder="Caută companie…" />
+    <input id="search-input" type="text" placeholder="Caută companie..." />
     <button id="clear-search">✕</button>
-
-    <button id="open-transports" class="hidden-control">
-      Transporturi
-    </button>
+    <button id="open-transports" class="hidden-control">Transporturi</button>
   </div>
-
   <div id="search-results"></div>
 </div>
 
-<!-- PANEL INSPECTOR (dreapta) -->
 <div id="inspector-panel" class="hidden">
   <div class="details-header">
-    <h2 id="company-name"></h2>
+    <h2 id="company-name">Companie</h2>
     <button id="close-panel">✕</button>
   </div>
 
   <div class="details-content">
-
+    
     <div class="category green">
-      <h3>🟢 Destinație plauzibilă</h3>
-      <ul id="list-green"></ul>
+      <div class="category-header" onclick="toggleList('list-green')">
+        <h3>🟢 Destinație plauzibilă</h3>
+        <span class="count-badge" id="count-green">0</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <ul id="list-green" class="transport-list hidden-list"></ul>
     </div>
 
     <div class="category orange">
-      <h3>🟠 Destinație incertă</h3>
-      <ul id="list-orange"></ul>
+      <div class="category-header" onclick="toggleList('list-orange')">
+        <h3>🟠 Destinație incertă</h3>
+        <span class="count-badge" id="count-orange">0</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <ul id="list-orange" class="transport-list hidden-list"></ul>
     </div>
 
     <div class="category red">
-      <h3>🔴 În afara razei</h3>
-      <ul id="list-red"></ul>
+      <div class="category-header" onclick="toggleList('list-red')">
+        <h3>🔴 Tracking Critic</h3>
+        <span class="count-badge" id="count-red">0</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <ul id="list-red" class="transport-list hidden-list"></ul>
     </div>
 
   </div>
 </div>
 
-<!-- MAP -->
 <div id="map"></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  function toggleList(id) {
+    const list = document.getElementById(id);
+    list.classList.toggle('hidden-list');
+  }
+</script>
 <script src="scripts/inspect.js"></script>
 
 </body>
