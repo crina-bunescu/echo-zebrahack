@@ -68,7 +68,7 @@
 
 /* === NAVBAR ADAPTARE === */
 .nav {
-  background: rgba(0,0,0,0.35);
+  background: rgba(140, 170, 92, 0.35);
   border-color: rgba(255,255,255,0.15);
   backdrop-filter: blur(12px);
 }
