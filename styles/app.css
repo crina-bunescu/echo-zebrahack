@@ -1,0 +1,25 @@
+/* === APP LAYOUT === */
+
+.app-main {
+  padding: 40px 0;
+}
+
+.app-card {
+  border-radius: var(--radius);
+  border: 1px solid var(--stroke);
+  background: rgba(247,247,214,0.85);
+  box-shadow: var(--shadow);
+  padding: 30px;
+}
+
+.app-card h1 {
+  margin-top: 0;
+  font-size: 32px;
+}
+
+.app-card p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+
