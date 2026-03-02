@@ -6,7 +6,7 @@ ECHO is a web application developed during the ZebraHack 3.0 hackathon (December
 🏆 Team Nova:
 * Bunescu Crina Gabriela: Algorithm & Logic Lead (Route analysis and suspicion score calculation)
 * Petre Ana Mihaela: Core Developer & Data Integration (API integration and map data visualization)
-* Anton Maria Alexia: Frontend & UX/UI Designer (Design, interface, and user experience)
+* Anton Maria Alexia: Frontend & UX/UI Designer (Design, interface and user experience)
 
 ▶️ Setup and Run
 1. Clone the local repository.
@@ -43,7 +43,8 @@ Fetch routes -> Fetch company lists -> Health Check query (`/api/health`).
 📂 Module 4 – UX/UI & Data Interface
 
 📘 Description: 
-Transforming rigid statistical data into a fluid and awareness-raising user experience. Includes loading animations, responsive design, and progress bars that visually correlate the transported volume with the identified maximum limits.
+Transforming rigid statistical data into a fluid and awareness-raising user experience. Includes loading animations, responsive design and progress bars that visually correlate the transported volume with the identified maximum limits.
 
 🧪 Functionality:
 Informative landing page (deforestation risks) -> Transports dashboard with tables and volume calculation by species (`calculeazaVolum()`).
+
