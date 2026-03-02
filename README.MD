@@ -1,46 +1,49 @@
-📁 Proiect: ECHO – Vizualizarea inteligentă a transporturilor de lemn
+📁 Project: ECHO – Intelligent Visualization of Timber Transports
 
-📌 Descriere generală
-ECHO este o aplicație web dezvoltată în cadrul hackathonului ZebraHack 3.0 (13 decembrie 2025), premiată cu Premiul de Excelență. Aplicația transformă datele brute din SUMAL 2.0 în semnale vizuale clare, ușor de înțeles. Deoarece pentru un utilizator obișnuit este foarte greu să identifice dacă un transport este normal sau suspect, ECHO interpretează rutele de transport al materialului lemnos și le clasifică pe baza unui algoritm personalizat de detecție a anomaliilor.
+📌 General Description
+ECHO is a web application developed during the ZebraHack 3.0 hackathon (December 13, 2025), which won the Award of Excellence. The application transforms raw data from SUMAL 2.0 into clear, easy-to-understand visual signals. Because it is very difficult for a regular user to identify whether a transport is normal or suspicious, ECHO interprets the timber transport routes and classifies them based on a custom anomaly detection algorithm.
 
-🏆 **Echipa Nova:**
-* Bunescu Crina Gabriela: Algorithm & Logic Lead (Analiza rutelor și calculul scorului de suspiciune)
-* Petre Ana Mihaela: Core Developer & Data Integration (Integrarea API-ului și afișarea datelor pe hartă)
-* Anton Maria Alexia: Frontend & UX/UI Designer (Design, interfață și experiența utilizatorului)
+🏆 Team Nova:
+* Bunescu Crina Gabriela: Algorithm & Logic Lead (Route analysis and suspicion score calculation)
+* Petre Ana Mihaela: Core Developer & Data Integration (API integration and map data visualization)
+* Anton Maria Alexia: Frontend & UX/UI Designer (Design, interface, and user experience)
 
+▶️ Setup and Run
+1. Clone the local repository.
+2. Run the `index.html` file using a local server (e.g., Live Server extension in VS Code).
+3. All calls to the ZebraHack API (`https://zebrahack.iqnox.tech`) are handled automatically via `zebrahack_client.js`.
 
-▶️ Configurare și Rulare
-1. Clonează repository-ul local.
-2. Rulează fișierul `index.html` folosind un server local (ex. extensia Live Server din VS Code).
-3. Toate apelurile către API-ul ZebraHack (`https://zebrahack.iqnox.tech`) sunt gestionate automat via `zebrahack_client.js`.
+📂 Module 1 – Route Analysis Algorithm (Suspicion Score)
 
-📂 Modul 1 – Algoritmul de Analiză a Rutelor (Scor de Suspiciune)
+📘 Description: 
+The core mathematical and algorithmic logic module. It takes the GPS coordinates (GeoJSON) of a transport's routes and calculates the actual distance traveled vs. the number of reporting points.
 
-📘 Descriere: Modulul central de logică matematică și algoritmică. Preia coordonatele GPS (GeoJSON) ale rutelor dintr-un transport și calculează distanța reală parcursă vs. numărul de puncte de raportare.
+🧪 Functionality: 
+Generates a *Suspicion Score*, dividing the routes into 3 critical categories displayed on the map:
+* 🟢 Plausible destination: Coherent route, sufficient points.
+* 🟠 Uncertain destination: Moderate discrepancies in reporting.
+* 🔴 Critical Tracking: Acute lack of GPS points (< 5) or high anomaly score (> 5.0).
 
-🧪 Funcționalitate: Generează un *Scor de Suspiciune*, împărțind rutele în 3 categorii critice afișate pe hartă:
-* 🟢 Destinație plauzibilă: Traseu coerent, puncte suficiente.
-* 🟠 Destinație incertă: Discrepanțe moderate în raportare.
-* 🔴 Tracking Critic: Lipsă acută de puncte GPS (< 5) sau scor de anomalie ridicat (> 5.0).
+📂 Module 2 – Interactive Map & Radius of Action (`map.js`)
 
-📂 Modul 2 – Harta Interactivă & Raza de Acțiune (`map.js`)
+📘 Description: 
+Integrates the `Leaflet.js` library for spatial data visualization. It allows the identification of companies (Issuer / Receiver) and the drawing of specific action radii based on their activity center.
 
-📘 Descriere: Integrează biblioteca `Leaflet.js` pentru o vizualizare spațială a datelor. Permite identificarea companiilor (Emitent / Destinatar) și desenarea razei de acțiune specifice pe baza centrului de activitate.
+🧪 Functionality:
+Live company search -> Display route polygons -> Display circle (action radius in km) -> Company details (Lat/Lon, last activity).
 
-🧪 Funcționalitate:
-Căutare live companie -> Afișare poligoane rute -> Afișare cerc (raza de acțiune în km) -> Detalii companie (Lat/Lon, ultima activitate).
+📂 Module 3 – API Processing & Data Integration (`zebrahack_client.js`)
 
-📂 Modul 3 – Procesare API & Integrare Date (`zebrahack_client.js`)
+📘 Description:
+A custom client (`ZebraHackClient`) created to standardize `GET` HTTP requests to the IQNOX server. It uses `fetch` and passes the application key (`X-App-Key: echo`) to fetch the necessary data asynchronously.
 
-📘 Descriere:
-Un client personalizat (`ZebraHackClient`) creat pentru a standardiza cererile HTTP `GET` către serverul IQNOX. Folosește `fetch` și pasează cheia aplicației (`X-App-Key: echo`) pentru a obține datele necesare asincron.
+🧪 Functionality:
+Fetch routes -> Fetch company lists -> Health Check query (`/api/health`).
 
-🧪 Funcționalitate:
-Preluare rute -> Preluare liste companii -> Interogare Health Check (`/api/health`).
+📂 Module 4 – UX/UI & Data Interface
 
-📂 Modul 4 – UX/UI & Interfața de Date
+📘 Description: 
+Transforming rigid statistical data into a fluid and awareness-raising user experience. Includes loading animations, responsive design, and progress bars that visually correlate the transported volume with the identified maximum limits.
 
-📘 Descriere: Transformarea unor date statistice rigide într-o experiență de utilizare fluidă și conștientizatoare. Include animații de încărcare, design responsive și bare grafice de progres care corelează vizual volumul transportat cu limitele maxime identificate.
-
-🧪 Funcționalitate:
-Landing page informativ (riscurile defrișărilor) -> Dashboard transporturi cu tabele și calcul volum pe specii (`calculeazaVolum()`).
+🧪 Functionality:
+Informative landing page (deforestation risks) -> Transports dashboard with tables and volume calculation by species (`calculeazaVolum()`).
