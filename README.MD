@@ -21,13 +21,11 @@ Each timber transport in SUMAL 2.0 has a GeoJSON route and a GPS point count. EC
 suspicionScore = totalDistanceKm / pointCount
 ```
 
-The Haversine formula is used to calculate the actual geodesic distance between consecutive GPS coordinates. The score is then classified:
+The Haversine formula calculates the actual geodesic distance between consecutive GPS coordinates. The score is then classified into three tiers:
 
-| Score | Tier | Meaning |
-|---|---|---|
-| points &lt; 5 or score &gt; 5.0 | 🔴 Critical | Severe GPS tracking gaps — likely route manipulation |
-| score &gt; 1.5 | 🟠 Uncertain | Sparse reporting relative to distance traveled |
-| otherwise | 🟢 Plausible | Coherent route with sufficient tracking points |
+- 🔴 **Critical** — fewer than 5 GPS points recorded, or score above 5.0 km/point. Indicates severe tracking gaps or likely route manipulation.
+- 🟠 **Uncertain** — score between 1.5 and 5.0 km/point. Reporting is sparse relative to distance traveled.
+- 🟢 **Plausible** — score at or below 1.5 km/point with sufficient tracking points. Route appears coherent.
 
 Routes are color-coded on the map in real time as data loads.
 
