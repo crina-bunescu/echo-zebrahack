@@ -1,50 +1,84 @@
-📁 Project: ECHO – Intelligent Visualization of Timber Transports
+# ECHO — Timber Transport Anomaly Detector
 
-📌 General Description
-ECHO is a web application developed during the ZebraHack 3.0 hackathon (December 13, 2025), which won the Award of Excellence. The application transforms raw data from SUMAL 2.0 into clear, easy-to-understand visual signals. Because it is very difficult for a regular user to identify whether a transport is normal or suspicious, ECHO interprets the timber transport routes and classifies them based on a custom anomaly detection algorithm.
+A web application built at **ZebraHack 3.0** (December 2025) that transforms raw data from Romania's SUMAL 2.0 timber tracking platform into actionable visual intelligence. ECHO applies a custom anomaly detection algorithm to GPS route data and classifies each transport into a risk tier, enabling inspectors to instantly identify suspicious activity.
 
-🏆 Team Nova:
-* Bunescu Crina Gabriela: Algorithm & Logic Lead (Route analysis and suspicion score calculation)
-* Petre Ana Mihaela: Core Developer & Data Integration (API integration and map data visualization)
-* Anton Maria Alexia: Frontend & UX/UI Designer (Design, interface and user experience)
+> 🏆 **Award of Excellence** — ZebraHack 3.0, Team Nova
 
-▶️ Setup and Run
-1. Clone the local repository.
-2. Run the `index.html` file using a local server (e.g., Live Server extension in VS Code).
-3. All calls to the ZebraHack API (`https://zebrahack.iqnox.tech`) are handled automatically via `zebrahack_client.js`.
+**Team Nova:**
+| Member | Role |
+|---|---|
+| Bunescu Crina-Gabriela | Algorithm & Logic Lead — Suspicion Score model, route analysis |
+| Petre Ana Mihaela | Core Developer & Data Integration — API integration, map rendering |
+| Anton Maria Alexia | Frontend & UX/UI Designer — interface, animations, user experience |
 
-📂 Module 1 – Route Analysis Algorithm (Suspicion Score)
+---
 
-📘 Description: 
-The core mathematical and algorithmic logic module. It takes the GPS coordinates (GeoJSON) of a transport's routes and calculates the actual distance traveled vs. the number of reporting points.
+## How It Works
 
-🧪 Functionality: 
-Generates a *Suspicion Score*, dividing the routes into 3 critical categories displayed on the map:
-* 🟢 Plausible destination: Coherent route, sufficient points.
-* 🟠 Uncertain destination: Moderate discrepancies in reporting.
-* 🔴 Critical Tracking: Acute lack of GPS points (< 5) or high anomaly score (> 5.0).
+Each timber transport in SUMAL 2.0 has a GeoJSON route and a GPS point count. ECHO computes a **Suspicion Score** for each route:
 
-📂 Module 2 – Interactive Map & Radius of Action (`map.js`)
+```
+suspicionScore = totalDistanceKm / pointCount
+```
 
-📘 Description: 
-Integrates the `Leaflet.js` library for spatial data visualization. It allows the identification of companies (Issuer / Receiver) and the drawing of specific action radii based on their activity center.
+The Haversine formula is used to calculate the actual geodesic distance between consecutive GPS coordinates. The score is then classified:
 
-🧪 Functionality:
-Live company search -> Display route polygons -> Display circle (action radius in km) -> Company details (Lat/Lon, last activity).
+| Score | Tier | Meaning |
+|---|---|---|
+| points &lt; 5 or score &gt; 5.0 | 🔴 Critical | Severe GPS tracking gaps — likely route manipulation |
+| score &gt; 1.5 | 🟠 Uncertain | Sparse reporting relative to distance traveled |
+| otherwise | 🟢 Plausible | Coherent route with sufficient tracking points |
 
-📂 Module 3 – API Processing & Data Integration (`zebrahack_client.js`)
+Routes are color-coded on the map in real time as data loads.
 
-📘 Description:
-A custom client (`ZebraHackClient`) created to standardize `GET` HTTP requests to the IQNOX server. It uses `fetch` and passes the application key (`X-App-Key: echo`) to fetch the necessary data asynchronously.
+---
 
-🧪 Functionality:
-Fetch routes -> Fetch company lists -> Health Check query (`/api/health`).
+## Pages & Features
 
-📂 Module 4 – UX/UI & Data Interface
+| Page | File | Description |
+|---|---|---|
+| Landing | `index.html` | Informational page on deforestation risks + API health check |
+| Map Explorer | `map.html` | Search companies, view all routes, toggle action radius, transport table with volume bars |
+| Route Inspector | `inspect.html` | Search a company, compute Suspicion Score per route, display triage panel (green / orange / red) with click-to-zoom |
+| Dashboard | `app.html` | Transport volume dashboard with species breakdown |
 
-📘 Description: 
-Transforming rigid statistical data into a fluid and awareness-raising user experience. Includes loading animations, responsive design and progress bars that visually correlate the transported volume with the identified maximum limits.
+---
 
-🧪 Functionality:
-Informative landing page (deforestation risks) -> Transports dashboard with tables and volume calculation by species (`calculeazaVolum()`).
+## Project Structure
 
+```
+.
+├── index.html / map.html / inspect.html / app.html
+├── scripts/
+│   ├── zebrahack_client.js   # ZebraHackClient — standardized GET wrapper (X-App-Key auth)
+│   ├── map.js                # Company search, route rendering, radius overlay, transport table
+│   ├── inspect.js            # Suspicion Score computation + triage panel
+│   └── index.js              # Landing page health-check button
+└── styles/
+    ├── style.css             # Landing page
+    ├── style_map_lc.css      # Map page
+    ├── inspect.css           # Inspector page
+    └── app.css               # Dashboard
+```
+
+---
+
+## Setup & Run
+
+No build step required — plain HTML/CSS/Vanilla JS.
+
+1. Clone the repository.
+2. Open with a local server (e.g. **Live Server** in VS Code).
+3. All API calls to `https://zebrahack.iqnox.tech` are handled automatically via `zebrahack_client.js` using `X-App-Key: echo`.
+
+> The ZebraHack API was provided by the hackathon organizers (IQNOX) and may not be publicly available outside the event.
+
+---
+
+## Technical Notes
+
+- **No frameworks** — pure Vanilla JS with ES module patterns (`ZebraHackApi` global) and async/await throughout.
+- **Leaflet.js** for interactive map rendering, GeoJSON polygon drawing and dynamic style updates on hover/click.
+- **Haversine distance** computed client-side from raw GeoJSON coordinates — no server processing needed.
+- **Debounced search** (250ms) on company input to avoid flooding the API.
+- Loading overlay with rotating status messages masks async fetch latency.
